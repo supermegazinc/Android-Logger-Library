@@ -1,23 +1,14 @@
-import java.io.FileInputStream
-import java.util.Properties
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("maven-publish")
 }
 
-val githubProperties = Properties()
-githubProperties.load(FileInputStream(rootProject.file("github.properties")))
-
-val versionName = "1.0"
-val myArtifactId = rootProject.name
-val gitUser = githubProperties["gpr.usr"].toString()
-val gitKey = githubProperties["gpr.key"].toString()
+group = "com.github.supermegazinc"
 
 android {
     namespace = "com.supermegazinc.${project.name}"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 21
@@ -49,6 +40,7 @@ publishing {
             artifact("${layout.buildDirectory.asFile.get().path}/outputs/aar/${project.name}-release.aar")
         }
     }
+    /*
     repositories {
         maven {
             name = "GitHubPackages"
@@ -59,6 +51,7 @@ publishing {
             }
         }
     }
+     */
 }
  */
 
