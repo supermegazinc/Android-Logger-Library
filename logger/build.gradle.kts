@@ -1,26 +1,14 @@
-import java.io.FileInputStream
-import java.util.Properties
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("maven-publish")
 }
 
-group = "com.github.supermegazinc"
-val versionName = "1.4"
-
-val myArtifactId = rootProject.name
-val githubProperties = Properties()
-githubProperties.load(FileInputStream(rootProject.file("github.properties")))
-val gitUser = githubProperties["gpr.usr"].toString()
-val gitKey = githubProperties["gpr.key"].toString()
-
 android {
-    namespace = "com.supermegazinc.${project.name}"
-    compileSdk = 35
 
     defaultConfig {
+        namespace = "com.github.supermegazinc"
+        compileSdk = 35
         minSdk = 21
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
