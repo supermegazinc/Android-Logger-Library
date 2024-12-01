@@ -39,6 +39,7 @@ android {
     }
 }
 
+/*
 publishing {
     publications {
         create<MavenPublication>("maven") {
@@ -59,6 +60,7 @@ publishing {
         }
     }
 }
+ */
 
 dependencies {
     implementation(libs.androidx.core.ktx)
