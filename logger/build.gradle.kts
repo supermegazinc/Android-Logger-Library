@@ -5,10 +5,10 @@ plugins {
 }
 
 android {
+    namespace = "com.supermegazinc.${project.name}"
+    compileSdk = 35
 
     defaultConfig {
-        namespace = "com.github.supermegazinc"
-        compileSdk = 35
         minSdk = 21
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
