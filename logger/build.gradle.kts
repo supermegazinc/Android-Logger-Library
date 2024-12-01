@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -5,6 +8,13 @@ plugins {
 }
 
 group = "com.github.supermegazinc"
+val versionName = "1.4"
+
+val myArtifactId = rootProject.name
+val githubProperties = Properties()
+githubProperties.load(FileInputStream(rootProject.file("github.properties")))
+val gitUser = githubProperties["gpr.usr"].toString()
+val gitKey = githubProperties["gpr.key"].toString()
 
 android {
     namespace = "com.supermegazinc.${project.name}"
@@ -39,31 +49,6 @@ publishing {
         }
     }
 }
-
-/*
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.github.$gitUser"
-            artifactId = myArtifactId
-            version = versionName
-            artifact("${layout.buildDirectory.asFile.get().path}/outputs/aar/${project.name}-release.aar")
-        }
-    }
-    /*
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/${gitUser}/${myArtifactId}")
-            credentials {
-                username = gitUser
-                password = gitKey
-            }
-        }
-    }
-     */
-}
- */
 
 dependencies {
     implementation(libs.androidx.core.ktx)
